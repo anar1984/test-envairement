@@ -250,7 +250,8 @@
 
 
                 <button class="btn btn-primary" id="ExportImportView_envairement" data-toggle="modal"
-                    data-target="#ExportImportBox_envairement">PULL PUSH</button>
+                    data-target="#ExportImportBox_envairement">PULL </button>
+                <button class="btn btn-success ml-3" id="import-file-save" >PUSH </button>
 
 
             </div>
@@ -552,8 +553,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
-                            <div class="row cs-flex-center-col">
+                         <!--    <hr> -->
+                           <!--  <div class="row cs-flex-center-col">
                                 <div class="flex-item mt-2">
                                     <div class="cs-input-group">
                                         <div class="input-group-addon">Select  Folder(From)</div>
@@ -576,7 +577,7 @@
                                             id="import-file-save">PUSH</button>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="row cs-flex-center-col">
                                 <div class="dataname"></div>
                             </div>
@@ -654,10 +655,7 @@
             getBacklogListByProject4Element(val, elm1);
 
         });
-        $(document).on('change', '#backlog_list_for_import_envairement', function (event) {
-                global_var.current_backlog_id=$(this).val();           
-
-        });
+      
         $(document).on('click', '#importexport-file-btn-envairement', function (event) {
             var blid = $("#backlog_list_for_export_envairement").val();
             var blNm = $("#backlog_list_for_export_envairement option:selected").text();
@@ -673,17 +671,16 @@
         });
         
         $(document).on('click', '#import-file-save', function (event) {
-            var link = $("#folder_list_for_import_envairement").val();
+            const link = Utility.getParamFromUrl('test_project_id');
            
-              link = link.replace(/%RE/g, " ")
-             
+                        
             $.get("resource/child/" + link + "/", function (html_string) {
                
                 $(html_string).find("td > a").each(function () {
                     if (openFile($(this).attr("href"))) {
                         var nm = $(this).attr("href");
                         var nm1 = nm.split('.');
-
+                        global_var.current_backlog_id=nm1[0]; 
                         $.get("resource/child/" + link + "/" + nm1[0]+'.html', function (html) {
                          
                             insertHtmlSendDbBybacklogId(html);                       
@@ -759,7 +756,7 @@
                 if (openFile($(this).attr("href"))) {
                     var nm = $(this).attr("href");
                      var nm1 = nm.split(".")
-
+                      var div = $('#mainBodyDivForAll') 
                     $.get("resource/child/" + link.replace(/%20/g, ' ') + "/" + nm, function (html_string) {
 
                         var linkjs = $("<scirpt>").attr('src', 'resource/child/' +
@@ -767,15 +764,16 @@
                         var linkcss = '<link  rel="stylesheet" href="resource/child/' +
                             link + '/' + nm1[0] + '.css" />';
                         
-                        var block = html_string;
+                        var block = $("<div>").html(html_string) ;
+                            block.find('#css-function-list-for-story-card').remove();
+                            block.find('#js-function-list-for-story-card').remove();
                         if (!html_string) {
-                            $('#mainBodyDivForAll').html('Data Not found');
+                            div.html('Data Not found');
                         } else {
-                            $('#mainBodyDivForAll').empty();
-                            $('#mainBodyDivForAll').append(linkcss);
-                            $('#mainBodyDivForAll').append(block);
-                            $('#mainBodyDivForAll').append(linkjs);
-
+                            div.empty();
+                            div.append(linkcss);
+                            div.append(block.html());
+                            div.append(linkjs);
                         }
                         loadSelectBoxesAfterGUIDesign($(
                             "#mainBodyDivForAll.redirectClass"));
