@@ -70,7 +70,7 @@
 
     <textarea id='yupi777' style='display:none'></textarea>
 
-    <div id='body_of_toaster' class="position-absolute w-100 d-flex flex-column p-4">
+    <div id='body_of_toaster' class="position-absolute w-100 d-flex flex-column ">
 
     </div>
 
@@ -206,113 +206,22 @@
 
 
             <div style="display: none;" class=" bottombtn">
-                <!--                        <div class="row row-style ">
-                                            <a class="btnplus" title="Sync with JIRA" onclick="new UserStory().syncWithJira(this)">
-                                                <i class="fa fa-refresh" data-toggle="tooltip"
-                                                   onclick="new UserStory().refreshBacklog(this)"                  
-                                                   title="Refresh" >
-                                                </i>
-                                            </a>
-                                            <a class="" title="Sync with JIRA" onclick="new UserStory().syncWithJira(this)">
-                                                <span class="description-main" style="margin-top: 19px;">Sync with JIRA</span>
-                                            </a>
-                                        </div>-->
 
                 </ul>
 
 
 
                 <div style="display: none;" class=" bottombtn">
-                    <!--                        <div class="row row-style ">
-                                                <a class="btnplus" title="Sync with JIRA" onclick="new UserStory().syncWithJira(this)">
-                                                    <i class="fa fa-refresh" data-toggle="tooltip"
-                                                       onclick="new UserStory().refreshBacklog(this)"                  
-                                                       title="Refresh" >
-                                                    </i>
-                                                </a>
-                                                <a class="" title="Sync with JIRA" onclick="new UserStory().syncWithJira(this)">
-                                                    <span class="description-main" style="margin-top: 19px;">Sync with JIRA</span>
-                                                </a>
-                                            </div>-->
-
-                    <!--                        <div class="row row-style ">
-                                                <a class="btnplus" title="Payment history" data-perm4temp="admin" onclick="new UserStory().loadPaymentHistory()" data-target="#getPaymentHistory"
-                                                   data-toggle="modal">
-                                                    <i class="fa fa-money"> </i>
-                                                </a>
-                                                <a  title="Payment history" data-perm4temp="admin" onclick="new UserStory().loadPaymentHistory()" data-target="#getPaymentHistory"
-                                                    data-toggle="modal">
-                                                    <span class="description-main" style="margin-top: 19px;">Payment history</span>
-                                                </a>
-                                            </div>-->
-
-                    <!--                        <div class="row row-style ">
-                                                <a class="btnplus" title="Notification" onclick="new Notification().getNotificationList();" role="button" data-toggle="modal"
-                                                   id="dropdownMenu1" data-target="#notificationList" aria-expanded="true" >
-                                                    <i class="fa fa-bell-o" aria-hidden="true"></i>
-                    
-                                                </a>
-                                                <a title="Notification" onclick="new Notification().getNotificationList();" role="button" data-toggle="modal"
-                                                   id="dropdownMenu1" data-target="#notificationList" aria-expanded="true" >
-                                                    <span class="description-main" style="margin-top: 19px;">Notification</span>
-                                                </a>
-                                            </div>-->
-
-
-
-
-                    <!--Bu duzelecek------------------------------------------------------>
-
-                    <!-- <a class="dropdown-toggle navbar-menu-profile btnplus" data-toggle="dropdown" href="#">
-                        <i class="fa fa-cog" aria-hidden="true"></i>
-                      
-                    </a>
-                    <span class="caret" hidden id="userprofile_main_domain">
-            
-                    <ul class="dropdown-menu navbar-submenu-conf">
-                        <li style="padding:5px 0px;"><a href="#" class="navbar-submenu-line-conf" data-target="#myAccountModal"
-                                                        data-toggle="modal" onclick="new User().loadPersonalUser()"><i
-                                    class="fa fa-inbox">&nbsp;</i>My Account</a></li>
-                        <li style="padding:5px 0px;"><a href="#" class="navbar-submenu-line-conf"
-                                                        data-target="#changeMyPasswordModal" data-toggle="modal"
-                                                        onclick="new User().changeMyPasswordModal()"><i
-                                    class="fa fa-edit">&nbsp;</i>Change Password</a></li>
-                        <li style="padding:5px 0px;"><a href="#" class="navbar-submenu-line-conf" onclick="javascript:logout()"><i
-                                    class="fa fa-sign-out">&nbsp;</i>Log Out</a></li>
-                    </ul>
-                      </span> -->
-                    <!--                <img src="" class="rounded-circle" style=" margin-top:6px;" width="25px" id="userprofile_main_userimg">-->
-
-                    <!--Bu duzelecek------------------------------------------------------>
-
-
-
 
 
 
                 </div>
             </div>
-            <!--      <div class="row row-style bottombtn2">
- 
-                     <span class="myaccountName" id="userprofile_main_id" style="margin-top: 5px;" data-toggle="dropdown" href="#" aria-expanded="false"></span>
-                     <div class="dropdown ">
-                        
- 
-                         <span class="caret" hidden="" id="userprofile_main_domain"></span>
-                         <ul class="dropdown-menu navbar-submenu-conf myaccount">
-                           
-                         </ul>
-                     </div>
- 
- 
-                 </div> -->
-
-
-
             </nav>
         </div>
 
         <div class="cs-top-navbar">
+
             <div class="cs-top-navbar-profile-box top-level-link project-item-zad">
 
                 <div class="btn-group dropup">
@@ -337,6 +246,15 @@
                     </div>
                 </div>
             </div>
+            <div class="cs-top-navbar-profile-box top-level-link project-item-zad">
+
+
+                <button class="btn btn-primary" id="ExportImportView_envairement" data-toggle="modal"
+                    data-target="#ExportImportBox_envairement">PULL PUSH</button>
+
+
+            </div>
+
         </div>
 
 
@@ -596,6 +514,83 @@
             </div>
         </div>
     </div>
+    <!-- Export Import Modal -->
+    <div class="cs-modal-box ExportImportBox modal fade" id="ExportImportBox_envairement" tabindex="-1" role="dialog"
+        aria-labelledby="ExportImportBoxModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="ExportImportBoxModal">Export Data</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="cs-popup-body">
+                        <div class="flex-container">
+                            <div class="row cs-flex-center-col">
+                                <div class="flex-item mt-2">
+                                    <div class="cs-input-group">
+                                        <div class="input-group-addon">Project Name</div>
+                                        <select class="selectpicker" id="project_list_for_export_envairement"
+                                            data-live-search="true">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="flex-item">
+                                    <div class="cs-input-group mt-2">
+                                        <div class="input-group-addon">Select Story Card</div>
+                                        <select class="selectpicker" id='backlog_list_for_export_envairement'
+                                            data-actions-box="true" data-live-search="true">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="flex-item">
+                                    <div class="cs-input-group mt-30px">
+                                        <button type="button" class="btn btn-light"
+                                            id="importexport-file-btn-envairement">PULL</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row cs-flex-center-col">
+                                <div class="flex-item mt-2">
+                                    <div class="cs-input-group">
+                                        <div class="input-group-addon">Select  Folder(From)</div>
+                                        <select class="selectpicker" id="folder_list_for_import_envairement"
+                                            data-live-search="true">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="flex-item">
+                                    <div class="cs-input-group mt-2">
+                                        <div class="input-group-addon">Select Story Card (To)</div>
+                                        <select class="selectpicker" id='backlog_list_for_import_envairement'
+                                            data-actions-box="true" data-live-search="true">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="flex-item">
+                                    <div class="cs-input-group mt-30px">
+                                        <button type="button" class="btn btn-light"
+                                            id="import-file-save">PUSH</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row cs-flex-center-col">
+                                <div class="dataname"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="ExportImportCloseBtn btn btn-secondary cs-btn-secondary"
+                        data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 
 
@@ -611,17 +606,114 @@
 
     });
     $(document).ready(function () {
+        // import export copy start
+        $(document).on('click', '#ExportImportView_envairement', function (event) {
+            var json = {
+                kv: {}
+            };
+            try {
+                json.kv.cookie = getToken();
+            } catch (err) {}
+            var that = this;
+            var data = JSON.stringify(json);
+            $.ajax({
+                url: urlGl + "api/post/srv/serviceTmGetProjectList4Modal",
+                type: "POST",
+                data: data,
+                contentType: "application/json",
+                crossDomain: true,
+                async: true,
+                success: function (res) {
+                    var select = $('#project_list_for_export_envairement');
+                    select.html('')
+                    var keys = res.tbl[0].r;
+                    for (let i = 0; i < keys.length; i++) {
+                        const o = keys[i];
+                        select.append($("<option>")
+                            .val(o.id)
+                            .text(o.projectName))
+                    }
+
+                    select.selectpicker('refresh')
+                    select.change();
+
+                },
+                error: function () {
+                    Toaster.showError(('somethingww'));
+                }
+            });
+
+
+        });
+        $(document).on('change', '#project_list_for_export_envairement', function (event) {
+
+            var elm = $("#backlog_list_for_export_envairement");
+            var elm1 = $("#backlog_list_for_import_envairement");
+            var val = $(this).val();
+            getBacklogListByProject4Element(val, elm);
+            getBacklogListByProject4Element(val, elm1);
+
+        });
+        $(document).on('change', '#backlog_list_for_import_envairement', function (event) {
+                global_var.current_backlog_id=$(this).val();           
+
+        });
+        $(document).on('click', '#importexport-file-btn-envairement', function (event) {
+            var blid = $("#backlog_list_for_export_envairement").val();
+            var blNm = $("#backlog_list_for_export_envairement option:selected").text();
+            console.log(blNm);
+                   
+                var element = document.createElement('a');
+                  element.setAttribute('href',"http://test.sourcedagile.com/api/get/dwd/zip/48edh/"+blid+"/"+blNm);
+                  element.setAttribute('download', blNm);
+                  document.body.appendChild(element);
+                  element.click();
+            
+
+        });
+        
+        $(document).on('click', '#import-file-save', function (event) {
+            var link = $("#folder_list_for_import_envairement").val();
+           
+              link = link.replace(/%RE/g, " ")
+             
+            $.get("resource/child/" + link + "/", function (html_string) {
+               
+                $(html_string).find("td > a").each(function () {
+                    if (openFile($(this).attr("href"))) {
+                        var nm = $(this).attr("href");
+                        var nm1 = nm.split('.');
+
+                        $.get("resource/child/" + link + "/" + nm1[0]+'.html', function (html) {
+                         
+                            insertHtmlSendDbBybacklogId(html);                       
+                        })
+                        $.get("resource/child/" + link + "/" + nm1[0]+'.css', function (css) {
+                         
+                            insertCssSendDbBybacklogId(css);                         
+                        })
+                        $.get("resource/child/" + link + "/" + nm1[0]+'.js', function (js) {
+                            insertJsSendDbBybacklogId(js);
+                        })
+
+                    }
+                })
+            })
+
+
+
+
+        });
         init();
         Utility.setParamOnLoad();
         $(".nav-menu").empty();
         $.get("resource/child/", function (html_string) {
-
+            var select = $('#folder_list_for_import_envairement');
+            select.html('')
             $(html_string).find("td > a").each(function () {
-               var txt = $(this).text();
-                var name =   txt.split('/');
-
-                console.log($(this).text());
-                 if(name[0] !=='Parent Directory'){
+                var txt = $(this).text();
+                var name = txt.split('/');
+                if (name[0] !== 'Parent Directory') {
                     $(".nav-menu").append(`<li>
                         <div class="project-item-zad">
                             <a class="manualProjectTest   openNavhide  left-menu-load " data-link="${name[0]}">
@@ -630,12 +722,19 @@
 
                         </div>
                     </li>`)
-                 }
-               
+
+
+                    select.append($("<option>")
+                        .val(name[0].replace(/ /g, "%RE"))
+                        .text(name[0]))
+
+                }
+                select.selectpicker('refresh')
+
             })
             const link = Utility.getParamFromUrl('test_project_id');
             if (link) {
-            $('[data-link="' + link + '"]').click();
+                $('[data-link="' + link.replace(/%20/g, ' ') + '"]').click();
             }
         })
     });
@@ -653,26 +752,35 @@
     $(document).on('click', '.manualProjectTest', function () {
         var link = $(this).attr("data-link");
         Utility.addParamToUrl('test_project_id', link);
+        console.log(link);
         $.get("resource/child/" + link + "/", function (html_string) {
-
+              
             $(html_string).find("td > a").each(function () {
                 if (openFile($(this).attr("href"))) {
-                      var nm = $(this).attr("href");
-                       
-                    $.get("resource/child/" + link + "/" + nm, function (html_string) {
+                    var nm = $(this).attr("href");
+                     var nm1 = nm.split(".")
 
-                        var linkjs = '<script src="resource/child/' + link + '/' +link + '.js" </scirpt>'
-                        var linkcss = '<link  rel="stylesheet" href="resource/child/' +link + '/' + link + '.css" />';
+                    $.get("resource/child/" + link.replace(/%20/g, ' ') + "/" + nm, function (html_string) {
 
-                        var block = linkcss + html_string + linkjs;
-                        if(!html_string){
+                        var linkjs = $("<scirpt>").attr('src', 'resource/child/' +
+                            link + '/' + nm1[0] + '.js')
+                        var linkcss = '<link  rel="stylesheet" href="resource/child/' +
+                            link + '/' + nm1[0] + '.css" />';
+                        
+                        var block = html_string;
+                        if (!html_string) {
                             $('#mainBodyDivForAll').html('Data Not found');
-                        }else{
-                            $('#mainBodyDivForAll').html(block);
+                        } else {
+                            $('#mainBodyDivForAll').empty();
+                            $('#mainBodyDivForAll').append(linkcss);
+                            $('#mainBodyDivForAll').append(block);
+                            $('#mainBodyDivForAll').append(linkjs);
 
                         }
-                        loadSelectBoxesAfterGUIDesign($("#mainBodyDivForAll .redirectClass"));
-                        $("#mainBodyDivForAll .redirectClass").find(".sa-onloadclick").click();
+                        loadSelectBoxesAfterGUIDesign($(
+                            "#mainBodyDivForAll.redirectClass"));
+                        $("#mainBodyDivForAll.redirectClass").find(".sa-onloadclick")
+                            .click();
                     })
 
                 }
