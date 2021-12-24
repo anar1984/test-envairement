@@ -50,7 +50,7 @@
 
     <script src="https://app.sourcedagile.com/resource/js/bs4/jquery.dragtable.js"></script>
     <script src="https://app.sourcedagile.com/resource/js/bs4/hummingbird-treeview.js"></script>
-    <script src="https://app.sourcedagile.com/resource/js/bs4/hummingbird-treeview.js"></script>
+    <script src="https://app.sourcedagile.com/resource/js/bs4/hummingbird-treeview.js"  ></script>
 
     <script src="https://app.sourcedagile.com/resource/js/bs4/bootstrap-select.min.js"></script>
     <script src="https://app.sourcedagile.com/resource/js/bs4/beaction.js"></script>
@@ -61,7 +61,8 @@
     <script src="https://app.sourcedagile.com/resource/js/bs4/sa-rel.js"></script>
     <script src="https://app.sourcedagile.com/resource/js/bs4/sa1.js"></script>
     <script src="https://app.sourcedagile.com/resource/js/bs4/ra.js"></script>
-    <script src="https://app.sourcedagile.com/resource/js/bs4/bc.js"></script>
+    <script  src="https://app.sourcedagile.com/resource/js/bs4/bc.js"></script>
+     
     <script src="https://app.sourcedagile.com/resource/js/bs4/prototype_new.js"></script>
 
 </head>
@@ -675,7 +676,7 @@
            
                         
             $.get("resource/child/" + link + "/", function (html_string) {
-               
+               console.log('asfasf');
                 $(html_string).find("td > a").each(function () {
                     if (openFile($(this).attr("href"))) {
                         var nm = $(this).attr("href");
@@ -756,35 +757,31 @@
                 if (openFile($(this).attr("href"))) {
                     var nm = $(this).attr("href");
                      var nm1 = nm.split(".")
-                      var div = $('#mainBodyDivForAll') 
-                    $.get("resource/child/" + link.replace(/%20/g, ' ') + "/" + nm, function (html_string) {
-
-                        var linkjs = $("<scirpt>").attr('src', 'resource/child/' +
-                            link + '/' + nm1[0] + '.js')
-                        var linkcss = '<link  rel="stylesheet" href="resource/child/' +
-                            link + '/' + nm1[0] + '.css" />';
-                        
-                        var block = $("<div>").html(html_string) ;
+                      var div = $('#mainBodyDivForAll') ;
+                      div.empty();
+                      let  block =$("<div>")
+                    $.get("resource/child/" + link.replace(/%20/g, ' ') + "/" + nm1[0]+".html", function (html_string) {
+                            block.append(html_string) ;
                             block.find('#css-function-list-for-story-card').remove();
                             block.find('#js-function-list-for-story-card').remove();
-                        if (!html_string) {
+                            block.prepend($("<link>")
+                                              .attr("href","resource/child/" + link.replace(/%20/g, ' ') + "/" + nm1[0]+".css"))
+                            block.append($("<script>")
+                                           .attr('src',"resource/child/" + link.replace(/%20/g, ' ') + "/" + nm1[0]+".js"))
+                    })
+                   console.log('sdfsdf');
+                    if (!html_string) {
                             div.html('Data Not found');
                         } else {
-                            div.empty();
-                            div.append(linkcss);
-                            div.append(block.html());
-                            div.append(linkjs);
+                          
+                            div.html(block);
+                            loadSelectBoxesAfterGUIDesign($("#mainBodyDivForAll.redirectClass"));
+                            $("#mainBodyDivForAll.redirectClass").find(".sa-onloadclick").click();
                         }
-                        loadSelectBoxesAfterGUIDesign($(
-                            "#mainBodyDivForAll.redirectClass"));
-                        $("#mainBodyDivForAll.redirectClass").find(".sa-onloadclick")
-                            .click();
-                    })
-
+                       
                 }
             })
         })
-
 
     });
 </script>
